@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Button, Input, TabView, Text} from 'react-native-elements';
-
+import colors from '../../constants/colors';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
@@ -48,12 +48,12 @@ export default function Login() {
         <View style={{flexDirection: 'row'}}>
           <Text style={styles.text}>Don't have an account? </Text>
           <TouchableOpacity>
-            <Text style={{color: 'cyan'}}>Sign Up</Text>
+            <Text style={{color: colors.secondaryColor}}>Sign Up</Text>
           </TouchableOpacity>
         </View>
         <Button
           title="Login"
-          titleStyle={{color: 'cyan'}}
+          titleStyle={{color: colors.secondaryColor}}
           buttonStyle={styles.button}
           onPress={handleSubmit}
         />
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   input: {
-    borderColor: '#040B51',
+    borderColor: colors.primaryColor,
     borderWidth: 2,
     borderRadius: 10,
     paddingHorizontal: 15,
@@ -80,15 +80,15 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     fontSize: 16,
     fontWeight: '600',
-    color: '#040B51',
+    color: colors.primaryColor,
   },
   text: {
     fontSize: 16,
     marginLeft: 10,
-    color: '#040B51',
+    color: colors.primaryColor,
   },
   button: {
-    backgroundColor: '#040B51',
+    backgroundColor: colors.primaryColor,
     alignSelf: 'center',
     width: 120,
     marginTop: 30,
