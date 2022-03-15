@@ -7,9 +7,11 @@ import AuthScreen from './screens/auth/AuthScreen';
 export default function App() {
   return (
     <SafeAreaProvider>
-      <ThemeProvider>
-        <AuthScreen />
-      </ThemeProvider>
+      <NavigationContainer>
+        <ThemeProvider>
+          <AuthScreen />
+        </ThemeProvider>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
