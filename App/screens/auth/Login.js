@@ -3,6 +3,7 @@ import {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Button, Input, TabView, Text} from 'react-native-elements';
 import colors from '../../constants/colors';
+import {anonSignIn} from '../../firebase/auth';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
@@ -10,14 +11,16 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState(false);
 
   const handleSubmit = () => {
-    if (!email || !email.includes('@')) setEmailError(true);
-    if (!password || password.length < 6) setPasswordError(true);
-    if (password.length > 6 && email.includes('@')) {
-      setEmailError(false);
-      setPasswordError(false);
-      //todo:database
-      console.log('DB call');
-    }
+    console.log('login');
+    anonSignIn();
+    // if (!email || !email.includes('@')) setEmailError(true);
+    // if (!password || password.length < 6) setPasswordError(true);
+    // if (password.length > 6 && email.includes('@')) {
+    //   setEmailError(false);
+    //   setPasswordError(false);
+    //   //todo:database
+    //   console.log('DB call');
+    // }
   };
   return (
     <TabView.Item style={styles.container}>

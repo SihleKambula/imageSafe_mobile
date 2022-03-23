@@ -3,6 +3,7 @@ import {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Button, Input, TabView, Text} from 'react-native-elements';
 import colors from '../../constants/colors';
+import {createUser, logOut} from '../../firebase/auth';
 export default function SignUp() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
@@ -24,8 +25,8 @@ export default function SignUp() {
       setEmailError(false);
       setPasswordError(false);
       setConfirmError(false);
-      //todo:database
-      console.log('DB call');
+      // createUser({email, password});
+      logOut();
     }
   };
   return (
