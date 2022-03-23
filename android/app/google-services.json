@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "555928050933",
+    "project_id": "imagesafe-2bca6",
+    "storage_bucket": "imagesafe-2bca6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555928050933:android:c0e8c20c23fa8c937679bc",
+        "android_client_info": {
+          "package_name": "com.imagesafe_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "555928050933-uoad0ri98m0jhlc9vk50jipclovlu2en.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.imagesafe_mobile",
+            "certificate_hash": "d2d48a6bc0ebdb7e33aa8ad1bca55509f394ec2a"
+          }
+        },
+        {
+          "client_id": "555928050933-ihiriso9l8stjn7i782chkm5j842hof1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_6PBtSCkz8KHX6OvYwL3NElFVAPLTE7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "555928050933-ihiriso9l8stjn7i782chkm5j842hof1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
