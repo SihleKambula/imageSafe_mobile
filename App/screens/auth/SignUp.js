@@ -63,12 +63,6 @@ export default function SignUp() {
           errorStyle={{color: 'red', fontSize: 14}}
           errorMessage={confirmError && "Passwords don't match"}
         />
-        <View style={{flexDirection: 'row'}}>
-          <Text style={styles.text}>Already have an account? </Text>
-          <TouchableOpacity>
-            <Text style={{color: colors.secondaryColor}}>Login</Text>
-          </TouchableOpacity>
-        </View>
         <Button
           title="Sign Up"
           titleStyle={{color: colors.secondaryColor}}
@@ -98,11 +92,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     fontSize: 16,
     fontWeight: '600',
-    color: colors.primaryColor,
-  },
-  text: {
-    fontSize: 16,
-    marginLeft: 10,
     color: colors.primaryColor,
   },
   button: {

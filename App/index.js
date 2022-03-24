@@ -15,8 +15,6 @@ export default function App() {
   function onAuthStateChange(user) {
     setUser(user);
     if (init) setInit(false);
-    console.log('App run');
-    console.log(user);
   }
 
   useEffect(() => {

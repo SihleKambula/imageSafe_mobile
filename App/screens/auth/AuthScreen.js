@@ -2,7 +2,7 @@ import auth from '@react-native-firebase/auth';
 import React from 'react';
 import {useEffect} from 'react';
 import {useState} from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View, ScrollView} from 'react-native';
 import {Tab, TabView, Text} from 'react-native-elements';
 import {useSelector} from 'react-redux';
 import Login from './Login';
@@ -11,7 +11,7 @@ export default function AuthScreen() {
   const [index, setIndex] = useState(0);
   return (
     <>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.imageContainer}>
           <Image source={require('../../assets/logo.png')} />
         </View>
@@ -42,7 +42,7 @@ export default function AuthScreen() {
           <Login />
           <SignUp />
         </TabView>
-      </View>
+      </ScrollView>
     </>
   );
 }
@@ -50,7 +50,6 @@ export default function AuthScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 100,
   },
   imageContainer: {
     alignItems: 'center',

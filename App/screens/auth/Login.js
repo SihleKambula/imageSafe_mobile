@@ -63,12 +63,6 @@ export default function Login() {
               errorStyle={{color: 'red', fontSize: 14}}
               errorMessage={passwordError && 'Enter correct password'}
             />
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.text}>Don't have an account? </Text>
-              <TouchableOpacity>
-                <Text style={{color: colors.secondaryColor}}>Sign Up</Text>
-              </TouchableOpacity>
-            </View>
             <Button
               title="Login"
               titleStyle={{color: colors.secondaryColor}}
@@ -100,11 +94,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     fontSize: 16,
     fontWeight: '600',
-    color: colors.primaryColor,
-  },
-  text: {
-    fontSize: 16,
-    marginLeft: 10,
     color: colors.primaryColor,
   },
   button: {
