@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect} from 'react';
 import {useState} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Button, Input, TabView, Text} from 'react-native-elements';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';

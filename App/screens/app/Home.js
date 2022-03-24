@@ -3,15 +3,17 @@ import {useEffect} from 'react';
 import {Text, View} from 'react-native';
 import {Button} from 'react-native-elements';
 import {useDispatch, useSelector} from 'react-redux';
-import {logout} from '../../redux/reducers/authSlice';
+import {logout, reset} from '../../redux/reducers/authSlice';
 
 export default function HomeScreen() {
   const {user} = useSelector(state => state.auth);
-  useEffect(() => {
-    if (!user) return null;
-  }, [user]);
-  const myUser = user?.user;
+  const myUser = user.user;
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(reset());
+  }, []);
+
   const handleLogout = () => {
     dispatch(logout());
   };

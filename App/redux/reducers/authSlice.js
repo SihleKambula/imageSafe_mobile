@@ -1,13 +1,30 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// login
+//get user from local storage
+export const getUserFromStorage = createAsyncThunk(
+  'auth/getUser',
+  async (_, thunkAPI) => {
+    try {
+      const jsonUser = await AsyncStorage.getItem('user');
+      const user = jsonUser ? JSON.parse(jsonUser) : null;
+      console.log(user);
+      return user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
 export const login = createAsyncThunk(
   'auth/SignUp',
   async (userData, thunkAPI) => {
     try {
       const {email, password} = userData;
       const user = await auth().signInWithEmailAndPassword(email, password);
+      const jsonUser = JSON.stringify(user);
+      await AsyncStorage.setItem('user', jsonUser);
       return user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.code);
@@ -98,6 +115,20 @@ export const authSlice = createSlice({
         state.user = payload;
       })
       .addCase(logout.rejected, (state, {payload}) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = payload;
+        state.user = null;
+      })
+      .addCase(getUserFromStorage.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getUserFromStorage.fulfilled, (state, {payload}) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = payload;
+      })
+      .addCase(getUserFromStorage.rejected, (state, {payload}) => {
         state.isLoading = false;
         state.isError = true;
         state.message = payload;
