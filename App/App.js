@@ -6,13 +6,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getUserFromStorage} from './redux/reducers/authSlice';
 export default function App() {
   const dispatch = useDispatch();
-  const {user, isLoading} = useSelector(state => state.auth);
+  const {user} = useSelector(state => state.auth);
   useEffect(() => {
     dispatch(getUserFromStorage());
   }, []);
   return (
     <>
-      {isLoading && <SplashScreen />}
       {!user && <AuthScreen />}
       {user && <HomeScreen />}
     </>

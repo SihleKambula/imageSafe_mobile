@@ -39,6 +39,8 @@ export const createUser = createAsyncThunk(
     try {
       const {email, password} = userData;
       const user = await auth().createUserWithEmailAndPassword(email, password);
+      const jsonUser = JSON.stringify(user);
+      await AsyncStorage.setItem('user', jsonUser);
       return user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.code);
@@ -50,6 +52,7 @@ export const createUser = createAsyncThunk(
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     const user = await auth().signOut();
+    await AsyncStorage.setItem('user', null);
     return user;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.code);
