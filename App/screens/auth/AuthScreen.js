@@ -1,10 +1,7 @@
-import auth from '@react-native-firebase/auth';
 import React from 'react';
-import {useEffect} from 'react';
 import {useState} from 'react';
 import {Image, StyleSheet, View, ScrollView} from 'react-native';
-import {Tab, TabView, Text} from 'react-native-elements';
-import {useSelector} from 'react-redux';
+import {Tab, TabView} from 'react-native-elements';
 import Login from './Login';
 import SignUp from './SignUp';
 export default function AuthScreen() {
