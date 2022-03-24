@@ -4,31 +4,13 @@ import {useEffect} from 'react';
 import {useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {Tab, TabView, Text} from 'react-native-elements';
+import {useSelector} from 'react-redux';
 import Login from './Login';
 import SignUp from './SignUp';
 export default function AuthScreen() {
   const [index, setIndex] = useState(0);
-  const [user, setUser] = useState(null);
-  const [init, setInit] = useState(true);
-
-  const onAuthStateChange = user => {
-    setUser(user);
-    if (init) setInit(false);
-    console.log(user);
-  };
-
-  useEffect(() => {
-    const subscribe = auth().onAuthStateChanged(onAuthStateChange);
-    return subscribe;
-  }, []);
-
   return (
     <>
-      {init && (
-        <View>
-          <Text>Loading</Text>
-        </View>
-      )}
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image source={require('../../assets/logo.png')} />
