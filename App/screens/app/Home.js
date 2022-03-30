@@ -1,12 +1,11 @@
 import React from 'react';
 import {useEffect} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {logout, reset} from '../../redux/reducers/authSlice';
 import {FlatGrid} from 'react-native-super-grid';
 import ImageView from '../../components/ImageView';
-
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const {user} = useSelector(state => state.auth);
   const myUser = user.user;
   const dispatch = useDispatch();
@@ -33,13 +32,18 @@ export default function HomeScreen() {
   ];
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={{justifyContent: 'center'}}>
+    <ScrollView style={styles.container}>
       <FlatGrid
         itemDimension={130}
         data={images}
-        renderItem={({item}) => <ImageView imageUrl={item.imageUrl} />}
+        renderItem={({item}) => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Download', {imageLink: item.imageUrl})
+            }>
+            <ImageView imageUrl={item.imageUrl} />
+          </TouchableOpacity>
+        )}
       />
     </ScrollView>
   );
@@ -48,5 +52,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
+  },
+  modal: {
+    width: 50,
   },
 });
