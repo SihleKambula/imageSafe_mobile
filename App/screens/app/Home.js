@@ -3,17 +3,8 @@ import {useEffect} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {logout, reset} from '../../redux/reducers/authSlice';
-import {Image} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
-
-const ImageView = ({imageUrl}) => {
-  return (
-    <Image
-      style={{width: 150, height: 150, resizeMode: 'cover', borderRadius: 10}}
-      source={{uri: imageUrl}}
-    />
-  );
-};
+import ImageView from '../../components/ImageView';
 
 export default function HomeScreen() {
   const {user} = useSelector(state => state.auth);
