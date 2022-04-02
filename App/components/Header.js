@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Image, Pressable, StyleSheet, View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-crop-picker';
 import {useDispatch} from 'react-redux';
 import {uploadImage} from '../redux/reducers/storageSlice';
+import colors from '../constants/colors';
 export default function Header() {
   const dispatch = useDispatch();
   const chooseImage = () => {
@@ -25,7 +26,7 @@ export default function Header() {
       />
       <Pressable onPress={chooseImage}>
         <Text>
-          <Icon name="rocket" size={30} color="#900" />
+          <Icon name="upload" size={25} color={colors.primaryColor} />
         </Text>
       </Pressable>
     </View>
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    maxWidth: '90%',
+    alignItems: 'center',
+    maxWidth: '95%',
   },
 });
