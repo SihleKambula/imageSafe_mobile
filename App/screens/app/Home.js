@@ -29,6 +29,11 @@ export default function HomeScreen({navigation}) {
       imageUrl:
         'https://images.unsplash.com/photo-1572363420552-058bd41af8c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     },
+    {
+      id: 3,
+      imageUrl:
+        'file:///storage/emulated/0/Android/data/com.imagesafe_mobile/files/Pictures/f23ca3f9-5bb8-4f69-aa4e-a862d95f2d18.jpg',
+    },
   ];
 
   return (
