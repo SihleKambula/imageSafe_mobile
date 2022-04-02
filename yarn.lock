@@ -1262,6 +1262,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-14.5.1.tgz#17b593bbbbbf8bcf979d10bee5b7736297770149"
   integrity sha512-zioU88bUz3sOGzEQw3VhvkWURKjgWk46P8wd0ukPrTeWj0pY1YsCosyy+0Svk9upTBkvHlywXmEHmkNeZLq7Uw==
 
+"@react-native-firebase/storage@^14.7.0":
+  version "14.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/storage/-/storage-14.7.0.tgz#4d16cd1c8bac4cf4f9931ae0657c55a0ab42adba"
+  integrity sha512-iiIe3IxIHCXqIT+CJGakMOE1GfOVLAIyZQJ/lFwHMIO0nNHJxPP772Nt8MhE/9aftEBvXE1xGh66GGwvnhR/Lw==
+
 "@react-native-seoul/masonry-list@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@react-native-seoul/masonry-list/-/masonry-list-1.1.4.tgz#67f8b59e19a61c78d03eb007f5ae574aeb7fbfb7"

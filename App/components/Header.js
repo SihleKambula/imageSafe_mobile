@@ -2,7 +2,10 @@ import React, {useState} from 'react';
 import {Image, Pressable, StyleSheet, View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-crop-picker';
+import {useDispatch} from 'react-redux';
+import {uploadImage} from '../redux/reducers/storageSlice';
 export default function Header() {
+  const dispatch = useDispatch();
   const chooseImage = () => {
     ImagePicker.openPicker({
       width: 300,
@@ -10,6 +13,7 @@ export default function Header() {
       cropping: true,
     }).then(image => {
       console.log(image);
+      dispatch(uploadImage(image));
     });
   };
 
