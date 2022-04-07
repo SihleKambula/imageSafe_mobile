@@ -1,8 +1,8 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, TouchableOpacity, Button} from 'react-native';
+import {ScrollView, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {logout, reset} from '../../redux/reducers/authSlice';
+import {reset} from '../../redux/reducers/authSlice';
 import {FlatGrid} from 'react-native-super-grid';
 import ImageView from '../../components/ImageView';
 import firestore from '@react-native-firebase/firestore';
@@ -26,12 +26,9 @@ export default function HomeScreen({navigation}) {
     return () => subscribe();
   }, [myUser]);
 
-  const handleLogout = () => {
-    dispatch(logout());
-  };
-
   return (
     <ScrollView style={styles.container}>
+      {!images && <Text>No images</Text>}
       {images && (
         <FlatGrid
           itemDimension={130}
@@ -46,8 +43,6 @@ export default function HomeScreen({navigation}) {
           )}
         />
       )}
-
-      <Button title="Logout" onPress={handleLogout} />
     </ScrollView>
   );
 }
