@@ -1,55 +1,53 @@
 import React from 'react';
-import {useEffect} from 'react';
-import {ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {useEffect, useState} from 'react';
+import {ScrollView, StyleSheet, TouchableOpacity, Button} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {logout, reset} from '../../redux/reducers/authSlice';
 import {FlatGrid} from 'react-native-super-grid';
 import ImageView from '../../components/ImageView';
+import firestore from '@react-native-firebase/firestore';
 export default function HomeScreen({navigation}) {
   const {user} = useSelector(state => state.auth);
   const myUser = user.user;
   const dispatch = useDispatch();
 
+  //local state
+  const [images, setImages] = useState(null);
+
   useEffect(() => {
     dispatch(reset());
-  }, []);
+    const {uid} = myUser;
+    const subscribe = firestore()
+      .collection('users')
+      .doc(uid)
+      .onSnapshot(doc => {
+        setImages(doc.data().images);
+      });
+    return () => subscribe();
+  }, [myUser]);
 
   const handleLogout = () => {
     dispatch(logout());
   };
 
-  const images = [
-    {
-      id: 1,
-      imageUrl:
-        'https://images.unsplash.com/photo-1588167056547-c183313da47c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=531&q=80',
-    },
-    {
-      id: 2,
-      imageUrl:
-        'https://images.unsplash.com/photo-1572363420552-058bd41af8c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    },
-    {
-      id: 3,
-      imageUrl:
-        'file:///storage/emulated/0/Android/data/com.imagesafe_mobile/files/Pictures/f23ca3f9-5bb8-4f69-aa4e-a862d95f2d18.jpg',
-    },
-  ];
-
   return (
     <ScrollView style={styles.container}>
-      <FlatGrid
-        itemDimension={130}
-        data={images}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('Download', {imageLink: item.imageUrl})
-            }>
-            <ImageView imageUrl={item.imageUrl} />
-          </TouchableOpacity>
-        )}
-      />
+      {images && (
+        <FlatGrid
+          itemDimension={130}
+          data={images}
+          renderItem={({item}) => (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('Download', {imageLink: item})
+              }>
+              <ImageView imageUrl={item} />
+            </TouchableOpacity>
+          )}
+        />
+      )}
+
+      <Button title="Logout" onPress={handleLogout} />
     </ScrollView>
   );
 }
