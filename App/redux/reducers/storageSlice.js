@@ -1,5 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import storage from '@react-native-firebase/storage';
+import {addImageLinkToDB} from '../../firebase/firestore';
 
 export const uploadImage = createAsyncThunk(
   'storage/Upload',
@@ -12,6 +13,7 @@ export const uploadImage = createAsyncThunk(
       const pathToFile = path;
       await reference.putFile(pathToFile);
       const url = await storage().ref(imageName).getDownloadURL();
+      await addImageLinkToDB(url);
       return url;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

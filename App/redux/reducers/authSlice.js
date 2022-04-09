@@ -1,6 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {addUserToDB} from '../../firebase/firestore';
 
 //get user from local storage
 export const getUserFromStorage = createAsyncThunk(
@@ -41,6 +42,7 @@ export const createUser = createAsyncThunk(
       const user = await auth().createUserWithEmailAndPassword(email, password);
       const jsonUser = JSON.stringify(user);
       await AsyncStorage.setItem('user', jsonUser);
+      await addUserToDB(user.uid);
       return user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.code);

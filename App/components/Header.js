@@ -15,7 +15,6 @@ export default function Header() {
       height: 400,
       cropping: true,
     }).then(image => {
-      console.log(image);
       dispatch(uploadImage(image));
     });
   };
